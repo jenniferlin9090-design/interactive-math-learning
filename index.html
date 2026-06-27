@@ -1,0 +1,636 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Firefly Math Club</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			#intro {
+				background-color: #312450;
+				background-image: url("assets/css/images/intro-bg.png");
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-attachment: scroll;
+				justify-content: flex-start;
+			}
+
+			#intro .inner {
+				max-width: none;
+				padding-top: clamp(14.5rem, 40vh, 16.5rem);
+			}
+
+			#intro h1 {
+				font-size: clamp(2.25rem, 4.6vw, 3.85rem);
+				max-width: none;
+				white-space: nowrap;
+				text-shadow: 0 0.15em 0.45em rgba(0, 0, 0, 0.45);
+			}
+
+			#intro p {
+				max-width: 680px;
+				text-shadow: 0 0.1em 0.35em rgba(0, 0, 0, 0.45);
+			}
+
+			@media screen and (max-width: 736px) {
+				#intro .inner {
+					padding-top: 9rem;
+				}
+
+				#intro h1 {
+					font-size: clamp(1.75rem, 8vw, 2.75rem);
+				}
+			}
+
+			.spotlights .content .inner p {
+				max-width: 46rem;
+			}
+
+			.section-note {
+				max-width: 820px;
+			}
+
+			.features section h3 {
+				margin-bottom: 0.65rem;
+			}
+
+			.features section ul {
+				margin-bottom: 0;
+			}
+
+			.activity-list {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+
+			#two > .inner,
+			#three > .inner {
+				padding-top: 2.25rem;
+			}
+
+			.stacked-list {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+
+			.activity-list section,
+			.stacked-list section {
+				width: 100%;
+			}
+
+			.activity-image {
+				display: block;
+				width: 100%;
+				max-width: 680px;
+				height: auto;
+				margin: 0.75rem 0 1.25rem;
+				border-radius: 8px;
+				border: 1px solid rgba(255, 255, 255, 0.18);
+				box-shadow: 0 0.9rem 1.8rem rgba(0, 0, 0, 0.16);
+			}
+
+			#three {
+				background: linear-gradient(135deg, #2f7d89 0%, #4b7294 100%);
+			}
+
+			#three .section-note {
+				color: rgba(255, 255, 255, 0.82);
+			}
+
+			.misconception-card {
+				background: rgba(255, 255, 255, 0.09);
+				border-color: rgba(255, 255, 255, 0.22);
+			}
+
+			.misconception-layout {
+				display: grid;
+				grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
+				gap: 1.5rem;
+				align-items: start;
+			}
+
+			.misconception-image {
+				width: 100%;
+				height: auto;
+				border-radius: 8px;
+				border: 1px solid rgba(255, 255, 255, 0.22);
+				box-shadow: 0 0.9rem 1.8rem rgba(0, 0, 0, 0.18);
+			}
+
+			.misconception-list {
+				display: grid;
+				gap: 0.75rem;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.misconception-list li {
+				background: rgba(255, 255, 255, 0.1);
+				border-left: 4px solid rgba(255, 255, 255, 0.8);
+				border-radius: 6px;
+				padding: 0.85rem 1rem;
+			}
+
+			.misconception-list strong {
+				color: #ffffff;
+			}
+
+			#four > .inner {
+				padding-top: 2.25rem;
+			}
+
+			.assessment-list {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+
+			.assessment-card {
+				width: 100%;
+			}
+
+			.assessment-layout {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1.5rem;
+				align-items: flex-start;
+			}
+
+			.assessment-layout > div:first-child {
+				flex: 1 1 380px;
+				min-width: 300px;
+			}
+
+			.assessment-card h3 {
+				font-size: clamp(1.25rem, 2vw, 1.55rem);
+				white-space: nowrap;
+			}
+
+			.assessment-visuals {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 0.9rem;
+				margin: 0.85rem 0 1.2rem;
+				max-width: 420px;
+			}
+
+			.assessment-image,
+			.assessment-qr {
+				width: 100%;
+				height: auto;
+				border-radius: 8px;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.16);
+			}
+
+			.assessment-image-link {
+				display: block;
+				border-bottom: 0;
+			}
+
+			.assessment-image-link .assessment-image {
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.assessment-image-link:hover .assessment-image {
+				transform: translateY(-3px);
+				box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.24);
+			}
+
+			.assessment-qr-panel {
+				background: rgba(255, 255, 255, 0.1);
+				border: 1px solid rgba(255, 255, 255, 0.18);
+				border-radius: 8px;
+				padding: 1rem;
+				flex: 0 0 280px;
+				justify-self: end;
+				margin-left: auto;
+				text-align: center;
+				width: 280px;
+			}
+
+			.assessment-qr-panel h4 {
+				margin: 0 0 0.75rem;
+			}
+
+			.assessment-qr-panel .actions {
+				justify-content: center;
+				margin: 1rem 0 0;
+			}
+
+			.assessment-focus {
+				background: rgba(255, 255, 255, 0.1);
+				border-left: 4px solid rgba(255, 255, 255, 0.82);
+				border-radius: 6px;
+				line-height: 1.55;
+				margin: 1.35rem 0 1rem;
+				max-width: 620px;
+				padding: 0.85rem 1rem;
+			}
+
+			@media screen and (max-width: 980px) {
+				.misconception-layout {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media screen and (max-width: 860px) {
+				.assessment-qr {
+					max-width: 260px;
+				}
+
+				.assessment-qr-panel {
+					justify-self: start;
+					margin-left: 0;
+					max-width: 320px;
+					width: 100%;
+				}
+
+				.misconception-image {
+					max-width: 520px;
+				}
+
+				.assessment-card h3 {
+					white-space: normal;
+				}
+			}
+
+			.quick-links {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1.25rem;
+				margin-top: 1.5rem;
+			}
+
+			.quick-link {
+				background: rgba(255, 255, 255, 0.055);
+				border: 1px solid rgba(255, 255, 255, 0.14);
+				border-radius: 8px;
+				padding: 1.25rem;
+			}
+
+			.quick-link h3 {
+				margin-top: 0;
+			}
+
+			.quick-link .actions {
+				margin-bottom: 0;
+			}
+
+			#five > .inner {
+				padding-top: 2.25rem;
+			}
+
+			.manual-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.25rem;
+				margin-top: 1.5rem;
+			}
+
+			.manual-card {
+				background: rgba(255, 255, 255, 0.07);
+				border: 1px solid rgba(255, 255, 255, 0.16);
+				border-radius: 8px;
+				padding: 1.25rem;
+			}
+
+			.manual-card h3 {
+				margin-top: 0;
+			}
+
+			.manual-card .icon.major {
+				margin-bottom: 0.9rem;
+			}
+
+			.manual-card p,
+			.manual-card li {
+				line-height: 1.65;
+			}
+
+			.manual-card ul,
+			.manual-card ol {
+				margin-bottom: 0;
+			}
+
+			.manual-actions {
+				margin-top: 1.5rem;
+			}
+
+			@media screen and (max-width: 736px) {
+				.quick-links,
+				.manual-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<section id="sidebar">
+			<div class="inner">
+				<nav>
+					<ul>
+						<li><a href="#intro">Welcome</a></li>
+						<li><a href="#one">Concepts</a></li>
+						<li><a href="#two">Activities</a></li>
+						<li><a href="#three">Misconceptions</a></li>
+						<li><a href="#four">Assessments</a></li>
+						<li><a href="#five">User Menu</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+
+		<div id="wrapper">
+			<section id="intro" class="wrapper style1 fullscreen fade-up">
+				<div class="inner">
+					<p>Welcome to Firefly Math Club, a focused learning space for mathematics, featuring clear explanations, interactive graphs, guided questions, and practical activities.</p>
+					<ul class="actions">
+						<li><a href="#one" class="button scrolly">Start Learning</a></li>
+						<li><a href="#two" class="button scrolly">View Activities</a></li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="one" class="wrapper style2 spotlights">
+				<section>
+					<a href="linear-equation-fall.html" class="image"><img src="images/linear-equation.png" alt="Graph and equation for linear equations in two variables" data-position="center center" /></a>
+					<div class="content">
+						<div class="inner">
+							<h2>Linear Equation in Two Variables</h2>
+							<p>Explore equations in the form ax + by = c. Learn how changing the coefficients affects the line, slope, intercepts, and solution points.</p>
+							<ul class="actions">
+								<li><a href="linear-equation-fall.html" class="button">Open Interactive Lesson</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<a href="quadratic-function-fall.html" class="image"><img src="images/quadratic-function.png" alt="Parabola graph for quadratic functions" data-position="top center" /></a>
+					<div class="content">
+						<div class="inner">
+							<h2>Quadratic Functions</h2>
+							<p>Study functions in the form f(x) = ax<sup>2</sup> + bx + c. Use the graph to investigate parabolas, vertices, axes of symmetry, and intercepts.</p>
+							<ul class="actions">
+								<li><a href="quadratic-function-fall.html" class="button">Open Interactive Lesson</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<section id="two" class="wrapper style3 fade-up">
+				<div class="inner">
+					<h2>Activities</h2>
+					<div class="features activity-list">
+						<section>
+							<span class="icon solid major fa-chart-line"></span>
+							<h3>Activity 1: Graph Detective for Linear Equations</h3>
+							<a class="activity-image-link" href="https://www.geogebra.org/calculator/cyp2grm3" target="_blank" aria-label="Open Linear Equation Activity page">
+								<img class="activity-image" src="images/Activity 1.png" alt="linear equation activity link">
+							</a>
+							<p><strong>Concept:</strong> Linear equations in two variables, ax + by = c.</p>
+							<p><strong>Objective:</strong> Students identify how a, b, and c affect a straight-line graph, including slope, x-intercept, y-intercept, and solution points.</p>
+							<p><strong>Student Tasks:</strong></p>
+							<ul>
+								<li>Open the interactive linear equation lesson.</li>
+								<li>Set a = 2, b = 3, and c = 6. Record the slope and intercepts shown on the page.</li>
+								<li>Move only c and describe how the line changes position.</li>
+								<li>Move a and b separately, then explain how the slope changes.</li>
+								<li>Choose one point on the line and substitute its x- and y-values into ax + by = c to prove it is a solution.</li>
+							</ul>
+							<p><strong>Expected Product:</strong> A short explanation with one sketch, one verified solution point, and one sentence explaining the meaning of slope or intercepts.</p>
+							<ul class="actions">
+								<li><a href="https://www.geogebra.org/calculator/cyp2grm3" class="button">Open Linear Activity</a></li>
+							</ul>
+						</section>
+						<section>
+							<span class="icon solid major fa-project-diagram"></span>
+							<h3>Activity 2: Parabola Explorer for Quadratic Functions</h3>
+							<a class="activity-image-link" href="game1.html" target="_blank" aria-label="Open Quadratic Function Activity page">
+								<img class="activity-image" src="images/activity-game1.png" alt="quadratic function activity link">
+							</a>
+							<p><strong>Concept:</strong> Quadratic functions, f(x) = ax<sup>2</sup> + bx + c.</p>
+							<p><strong>Objective:</strong> Students investigate how a, b, and c affect the shape and position of a parabola, including opening direction, width, vertex, axis of symmetry, and y-intercept.</p>
+							<p><strong>Student Tasks:</strong></p>
+							<ul>
+								<li>Open the interactive quadratic function lesson.</li>
+								<li>Set a = 1, b = 0, and c = 0. Record the vertex, axis of symmetry, and y-intercept.</li>
+								<li>Change a to a negative value and describe what happens to the opening direction.</li>
+								<li>Change b and observe how the vertex and axis of symmetry move.</li>
+								<li>Change c and explain how the y-intercept and graph position change.</li>
+							</ul>
+							<p><strong>Expected Product:</strong> A completed observation table comparing three different quadratic functions and a short paragraph explaining which coefficient caused the biggest visible change.</p>
+							<ul class="actions">
+								<li><a href="https://www.geogebra.org/calculator/xvq3qetr" class="button">Open Quadratic Activity1</a></li>
+								<li><a href="https://www.geogebra.org/calculator/nx4ectx9" class="button">Open Quadratic Activity2</a></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</section>
+
+			<section id="three" class="wrapper fade-up">
+				<div class="inner">
+					<h2>Common Misconceptions</h2>
+					<div class="features stacked-list">
+						<section class="misconception-card">
+							<span class="icon solid major fa-chart-line"></span>
+							<h3>Linear Equations in Two Variables</h3>
+							<div class="misconception-layout">
+								<img class="misconception-image" src="images/linear-equation-1.png" alt="Linear equation graph example" />
+								<div>
+									<p><strong>Common Misconceptions:</strong></p>
+									<ul class="misconception-list">
+										<li><strong>Mistake:</strong> Every equation with x and y is linear.<br><strong>Correct idea:</strong> It is linear only when x and y have degree 1, such as ax + by = c.</li>
+										<li><strong>Mistake:</strong> One solution is the only answer.<br><strong>Correct idea:</strong> A linear equation in two variables has many solution points on the same straight line.</li>
+										<li><strong>Mistake:</strong> Slope and y-intercept mean the same thing.<br><strong>Correct idea:</strong> Slope tells steepness; y-intercept is where the line crosses the y-axis.</li>
+										<li><strong>Mistake:</strong> Changing c changes the steepness of the line.<br><strong>Correct idea:</strong> Changing c usually shifts the line; a and b affect the slope.</li>
+										<li><strong>Mistake:</strong> A vertical line is not a linear graph.<br><strong>Correct idea:</strong> If b = 0 and a is not 0, the graph is a vertical line.</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section class="misconception-card">
+							<span class="icon solid major fa-project-diagram"></span>
+							<h3>Quadratic Functions</h3>
+							<div class="misconception-layout">
+								<img class="misconception-image" src="images/quadratic-function-1.png" alt="Quadratic function graph example" />
+								<div>
+									<p><strong>Common Misconceptions:</strong></p>
+									<ul class="misconception-list">
+										<li><strong>Mistake:</strong> All curved graphs are quadratic.<br><strong>Correct idea:</strong> A quadratic function has degree 2 and can be written as f(x) = ax<sup>2</sup> + bx + c.</li>
+										<li><strong>Mistake:</strong> The vertex is always at (0, 0).<br><strong>Correct idea:</strong> The vertex changes when b and c change.</li>
+										<li><strong>Mistake:</strong> c controls the width of the parabola.<br><strong>Correct idea:</strong> c moves the graph up or down; a controls opening direction and width.</li>
+										<li><strong>Mistake:</strong> A negative a-value means there is no graph.<br><strong>Correct idea:</strong> A negative a-value makes the parabola open downward.</li>
+										<li><strong>Mistake:</strong> The axis of symmetry is always the y-axis.<br><strong>Correct idea:</strong> The axis of symmetry passes through the vertex and is not always x = 0.</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</section>
+
+			<section id="four" class="wrapper style2 fade-up">
+				<div class="inner">
+					<h2>Assessments</h2>
+					<div class="features assessment-list">
+						<section class="assessment-card">
+							<span class="icon solid major fa-list-ol"></span>
+							<h3>Assessment 1: Linear Equations in Two Variables</h3>
+							<div class="assessment-layout">
+								<div>
+									<div class="assessment-visuals">
+										<img class="assessment-image" src="images/Activity 1.png" alt="Linear equations activity preview" />
+										<a class="assessment-image-link" href="https://kahoot.it/challenge/07612202?challenge-id=af8d0066-a985-4790-b98b-83891f6ab121_1780303938430" target="_blank" aria-label="Open Assessment 1 Kahoot creator page">
+											<img class="assessment-image" src="images/Assessment1.png" alt="Assessment 1 icon for linear equations" />
+										</a>
+									</div>
+									<p class="assessment-focus"><strong>Focus:</strong> Understanding equations in the form ax + by = c and interpreting their straight-line graphs.</p>
+									<ul>
+										<li>Identify whether an equation is linear in two variables.</li>
+										<li>Find and interpret slope, x-intercept, and y-intercept.</li>
+										<li>Recognize solution points on a line.</li>
+										<li>Explain how changing a, b, or c affects the graph.</li>
+									</ul>
+								</div>
+								<div class="assessment-qr-panel">
+									<h4>Kahoot! QR Code</h4>
+									<img class="assessment-qr" src="images/assignment1-qr-code.png" alt="QR code for Assessment 1 Kahoot challenge" />
+									<ul class="actions">
+										<li><a href="https://kahoot.it/challenge/07612202" target="_blank" class="button">Open Assessment 1</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+
+						<section class="assessment-card">
+							<span class="icon solid major fa-comments"></span>
+							<h3>Assessment 2: Quadratic Functions</h3>
+							<div class="assessment-layout">
+								<div>
+									<div class="assessment-visuals">
+										<img class="assessment-image" src="images/Activity 2.png" alt="Quadratic functions activity preview" />
+										<a class="assessment-image-link" href="https://kahoot.it/challenge/01729989?challenge-id=af8d0066-a985-4790-b98b-83891f6ab121_1780303878239" target="_blank" aria-label="Open Assessment 2 Kahoot creator page">
+											<img class="assessment-image" src="images/Assessment2.png" alt="Assessment 2 icon for quadratic functions" />
+										</a>
+									</div>
+									<p class="assessment-focus"><strong>Focus:</strong> Understanding f(x) = ax<sup>2</sup> + bx + c and interpreting key features of a parabola.</p>
+									<ul>
+										<li>Identify quadratic functions from their equations.</li>
+										<li>Describe opening direction and width using a.</li>
+										<li>Find or interpret the vertex and axis of symmetry.</li>
+										<li>Explain how c affects the y-intercept and vertical position.</li>
+									</ul>
+								</div>
+								<div class="assessment-qr-panel">
+									<h4>Kahoot! QR Code</h4>
+									<img class="assessment-qr" src="images/assignment2-qr-code.png" alt="QR code for Assessment 2 Kahoot challenge" />
+									<ul class="actions">
+										<li><a href="https://kahoot.it/challenge/01729989" target="_blank" class="button">Open Assessment 2</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</section>
+
+			<section id="five" class="wrapper style1 fade-up">
+				<div class="inner">
+					<h2>User Menu</h2>
+					<p class="section-note">This guide helps students and teachers use the website effectively for learning linear equations in two variables and quadratic functions.</p>
+					<div class="manual-grid">
+						<section class="manual-card featured">
+							<span class="icon solid major fa-info-circle"></span>
+							<h3>Introduction to the Product</h3>
+							<p>Firefly Math Club is an interactive learning resource for exploring graphs, equations, activities, misconceptions, and assessments. It supports visual learning through sliders, guided questions, images, and Kahoot! assessment links.</p>
+						</section>
+
+						<section class="manual-card">
+							<span class="icon solid major fa-bullseye"></span>
+							<h3>Learning Objectives</h3>
+							<ul>
+								<li>Understand linear equations in two variables in the form ax + by = c.</li>
+								<li>Interpret slope, intercepts, and solution points from a straight-line graph.</li>
+								<li>Understand quadratic functions in the form f(x) = ax<sup>2</sup> + bx + c.</li>
+								<li>Identify vertex, axis of symmetry, opening direction, and y-intercept of a parabola.</li>
+							</ul>
+						</section>
+
+						<section class="manual-card">
+							<span class="icon solid major fa-tasks"></span>
+							<h3>Step-by-Step Instructions</h3>
+							<ol>
+								<li>Start from the Concepts section and choose a topic.</li>
+								<li>Use the sliders in the interactive lesson to observe graph changes.</li>
+								<li>Read the guided questions and record observations.</li>
+								<li>Complete the related activity in the Activities section.</li>
+								<li>Review Common Misconceptions to correct mistakes.</li>
+								<li>Scan the QR code or open the Kahoot! link in Assessments.</li>
+							</ol>
+						</section>
+
+						<section class="manual-card">
+							<span class="icon solid major fa-users"></span>
+							<h3>Target Users</h3>
+							<ul>
+								<li><strong>Students:</strong> Lower to middle secondary students learning algebra and graph interpretation.</li>
+								<li><strong>Teachers:</strong> Mathematics teachers who need visual demonstrations, guided activities, and quick formative assessments.</li>
+								<li><strong>Classroom use:</strong> Suitable for individual exploration, pair work, or teacher-led explanation.</li>
+							</ul>
+						</section>
+
+						<section class="manual-card">
+							<span class="icon solid major fa-check-circle"></span>
+							<h3>Expected Learning Outcomes</h3>
+							<ul>
+								<li>Students can connect equations with their graph shapes.</li>
+								<li>Students can explain how coefficients affect graphs.</li>
+								<li>Students can identify and correct common misconceptions.</li>
+								<li>Students can answer topic-based Kahoot! questions with better confidence.</li>
+							</ul>
+						</section>
+
+						<section class="manual-card featured">
+							<span class="icon solid major fa-exclamation-triangle"></span>
+							<h3>Limitations or Constraints</h3>
+							<ul>
+								<li>The interactive graphs are designed for learning and visualization, not advanced graphing precision.</li>
+								<li>Kahoot! links require internet access and may require students to enter a game challenge page.</li>
+								<li>Very small screens may require scrolling to view graphs, activities, and QR codes comfortably.</li>
+								<li>The website focuses only on selected concepts: linear equations in two variables and quadratic functions.</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="actions manual-actions">
+						<li><a href="linear-equation-fall.html" class="button">Open Linear Lesson</a></li>
+						<li><a href="quadratic-function-fall.html" class="button">Open Quadratic Lesson</a></li>
+					</ul>
+				</div>
+			</section>
+		</div>
+
+		<footer id="footer" class="wrapper style1-alt">
+			<div class="inner">
+				<ul class="menu">
+					<li>&copy; Firefly Math Club. All rights reserved.Designer: LIN XIUQUN</li>
+				</ul>
+			</div>
+		</footer>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
